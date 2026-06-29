@@ -1,4 +1,4 @@
-# action-lint-workflows
+# reusable-lint-workflows
 
 lint workflow files
 
