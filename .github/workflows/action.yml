@@ -24,9 +24,26 @@ jobs:
             .github/workflows
             .github/actions
           sparse-checkout-cone-mode: false
-      - uses: rhysd/actionlint@887273ce9b41efa6e6d9f2dfa0b4b68d7b2d4aeb # v1.7.12
+      - shell: bash
+        run: |
+          set -euo pipefail
+          cat > "${RUNNER_TEMP}/aqua.yaml" <<'EOF'
+          checksum:
+            enabled: true
+          registries:
+            - type: standard
+              ref: v4.529.1 # renovate: depName=aquaproj/aqua-registry
+          packages:
+            - name: rhysd/actionlint@v1.7.12
+          EOF
+          echo "AQUA_GLOBAL_CONFIG=${RUNNER_TEMP}/aqua.yaml" >> "${GITHUB_ENV}"
+      - uses: aquaproj/aqua-installer@a78671ff723534c879a9c8aa62c99a3a05dddb49 # v4.0.5
         with:
-          flags: "-color"
+          aqua_version: v2.60.1
+      - shell: bash
+        run: |
+          set -euo pipefail
+          actionlint -color
 
   ghalint:
     name: ghalint
@@ -42,9 +59,26 @@ jobs:
             .github/workflows
             .github/actions
           sparse-checkout-cone-mode: false
-      - uses: suzuki-shunsuke/ghalint-action@c8d3c0dcc9152f1d1c7d4a38cbf4953c3a55953d # v1.0.0
+      - shell: bash
+        run: |
+          set -euo pipefail
+          cat > "${RUNNER_TEMP}/aqua.yaml" <<'EOF'
+          checksum:
+            enabled: true
+          registries:
+            - type: standard
+              ref: v4.529.1 # renovate: depName=aquaproj/aqua-registry
+          packages:
+            - name: suzuki-shunsuke/ghalint@v1.5.6
+          EOF
+          echo "AQUA_GLOBAL_CONFIG=${RUNNER_TEMP}/aqua.yaml" >> "${GITHUB_ENV}"
+      - uses: aquaproj/aqua-installer@a78671ff723534c879a9c8aa62c99a3a05dddb49 # v4.0.5
         with:
-          version: v1.5.4
+          aqua_version: v2.60.1
+      - shell: bash
+        run: |
+          set -euo pipefail
+          ghalint run
 
   zizmor:
     name: zizmor
@@ -79,4 +113,4 @@ jobs:
             .github/workflows
             .github/actions
           sparse-checkout-cone-mode: false
-      - uses: koki-develop/ghasec-action@8c7b89eedb0e06040f9085b6748ef38f5e39c8e4 # v0.5.0
+      - uses: koki-develop/ghasec-action@2810775d2a300cb3fd9583c36c05b5ee3310c5b8 # v1.1.1
