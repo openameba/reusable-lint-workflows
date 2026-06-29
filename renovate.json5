@@ -1,7 +1,19 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
   extends: [
+    'local>aquaproj/aqua-renovate-config#2.13.0',
     'local>openameba/renovate-config:main.json5',
     'local>openameba/renovate-config:automerge-all.json5'
+  ],
+  customManagers: [
+    {
+      customType: 'regex',
+      managerFilePatterns: ['/^\\.github/workflows/.*\\.ya?ml$/'],
+      matchStrings: [
+        '- name: (?<depName>[^@\\s]+)@(?<currentValue>\\S+)',
+        'ref: (?<currentValue>\\S+) # renovate: depName=(?<depName>\\S+)'
+      ],
+      datasourceTemplate: 'github-releases'
+    }
   ]
 }
