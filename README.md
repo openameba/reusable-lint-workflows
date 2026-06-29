@@ -17,10 +17,11 @@ on:
     paths:
       - ".github/workflows/**"
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   lint-workflow-files:
-    uses: openameba/reusable-lint-workflows/.github/workflows/action.yml@4baef1161e214d85130d0a1a281f876ac9956442
+    permissions:
+      contents: read
+    uses: openameba/reusable-lint-workflows/.github/workflows/action.yml@d5d3390650196e1e10ad9b8a8aa0b1e28684e649
 ```
