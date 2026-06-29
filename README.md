@@ -17,7 +17,8 @@ on:
     paths:
       - ".github/workflows/**"
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
   lint-workflow-files:
