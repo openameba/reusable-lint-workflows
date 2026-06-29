@@ -1,0 +1,17 @@
+name: lint workflow files
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/**"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/**"
+
+permissions: {}
+
+jobs:
+  lint-workflow-files:
+    uses: ./.github/workflows/action.yml
