@@ -23,5 +23,5 @@ jobs:
   lint-workflow-files:
     permissions:
       contents: read
-    uses: openameba/reusable-lint-workflows/.github/workflows/action.yml@d5d3390650196e1e10ad9b8a8aa0b1e28684e649
+    uses: openameba/reusable-lint-workflows/.github/workflows/action.yml@3348ac7c85b021c13669e91a51e5f7a8bef91577 # v1.0.0
 ```
