@@ -10,9 +10,10 @@ on:
     paths:
       - ".github/workflows/**"
 
-permissions:
-  contents: read
+permissions: {}
 
 jobs:
   lint-workflow-files:
+    permissions:
+      contents: read
     uses: ./.github/workflows/action.yml
