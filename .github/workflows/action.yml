@@ -4,15 +4,18 @@ on:
   workflow_call:
     inputs:
       runner:
+        description: |
+          The value passed to runs-on, as a JSON string.
+          Single label: '"ubuntu-latest"'. Multiple labels: '["self-hosted", "linux"]'.
         type: string
-        default: ubuntu-latest
+        default: '"ubuntu-latest"'
 
 permissions: {}
 
 jobs:
   actionlint:
     name: actionlint
-    runs-on: ${{ inputs.runner }}
+    runs-on: ${{ fromJSON(inputs.runner) }}
     timeout-minutes: 10
     permissions:
       contents: read
@@ -46,7 +49,7 @@ jobs:
 
   ghalint:
     name: ghalint
-    runs-on: ${{ inputs.runner }}
+    runs-on: ${{ fromJSON(inputs.runner) }}
     timeout-minutes: 10
     permissions:
       contents: read
@@ -80,7 +83,7 @@ jobs:
 
   zizmor:
     name: zizmor
-    runs-on: ${{ inputs.runner }}
+    runs-on: ${{ fromJSON(inputs.runner) }}
     timeout-minutes: 10
     permissions:
       contents: read
@@ -99,7 +102,7 @@ jobs:
 
   ghasec:
     name: ghasec
-    runs-on: ${{ inputs.runner }}
+    runs-on: ${{ fromJSON(inputs.runner) }}
     timeout-minutes: 10
     permissions:
       contents: read
