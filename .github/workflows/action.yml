@@ -9,6 +9,14 @@ on:
           Single label: '"ubuntu-latest"'. Multiple labels: '["self-hosted", "linux"]'.
         type: string
         default: '"ubuntu-latest"'
+      extra-paths:
+        description: |
+          Extra newline-separated paths to add to sparse-checkout,
+          for repos whose actions or lint config live outside
+          .github/workflows and .github/actions (e.g. custom action dirs,
+          .github/actionlint.yml).
+        type: string
+        default: ''
 
 permissions: {}
 
@@ -26,6 +34,7 @@ jobs:
           sparse-checkout: |
             .github/workflows
             .github/actions
+            ${{ inputs.extra-paths }}
           sparse-checkout-cone-mode: false
       - shell: bash
         run: |
@@ -60,6 +69,7 @@ jobs:
           sparse-checkout: |
             .github/workflows
             .github/actions
+            ${{ inputs.extra-paths }}
           sparse-checkout-cone-mode: false
       - shell: bash
         run: |
@@ -94,6 +104,7 @@ jobs:
           sparse-checkout: |
             .github/workflows
             .github/actions
+            ${{ inputs.extra-paths }}
           sparse-checkout-cone-mode: false
       - uses: zizmorcore/zizmor-action@192e21d79ab29983730a13d1382995c2307fbcaa # v0.5.7
         with:
@@ -113,5 +124,6 @@ jobs:
           sparse-checkout: |
             .github/workflows
             .github/actions
+            ${{ inputs.extra-paths }}
           sparse-checkout-cone-mode: false
       - uses: koki-develop/ghasec-action@2810775d2a300cb3fd9583c36c05b5ee3310c5b8 # v1.1.1
