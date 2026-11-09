@@ -81,7 +81,7 @@ jobs:
             - type: standard
               ref: v4.581.0 # renovate: depName=aquaproj/aqua-registry
           packages:
-            - name: suzuki-shunsuke/ghalint@v1.5.7
+            - name: suzuki-shunsuke/ghalint@v1.6.0
           EOF
       - uses: aquaproj/aqua-installer@611554c6f0137ba41c8dd15aca8bee82504ea461 # v4.1.1
         with:
