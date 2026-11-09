@@ -44,7 +44,7 @@ jobs:
             enabled: true
           registries:
             - type: standard
-              ref: v4.579.0 # renovate: depName=aquaproj/aqua-registry
+              ref: v4.581.0 # renovate: depName=aquaproj/aqua-registry
           packages:
             - name: rhysd/actionlint@v1.7.12
           EOF
@@ -79,7 +79,7 @@ jobs:
             enabled: true
           registries:
             - type: standard
-              ref: v4.579.0 # renovate: depName=aquaproj/aqua-registry
+              ref: v4.581.0 # renovate: depName=aquaproj/aqua-registry
           packages:
             - name: suzuki-shunsuke/ghalint@v1.5.7
           EOF
